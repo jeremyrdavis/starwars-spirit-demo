@@ -12,6 +12,8 @@ import jakarta.ws.rs.core.MediaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 @Path("/hello")
 public class StarWarsSpiritResource {
 
@@ -30,5 +32,13 @@ public class StarWarsSpiritResource {
         StarWarsSpirit starWarsSpirit = new StarWarsSpirit(name, starWarsCharacter.url());
         starWarsSpirit.persist();
         return "Hello, %s!  Your Star Wars Spirit character is %s.".formatted(name, starWarsCharacter.name());
+    }
+
+    @GET
+    @Path("/spirits")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<StarWarsSpirit> allSpirits() {
+        LOGGER.info("Running allSpirits");
+        return StarWarsSpirit.listAll();
     }
 }
