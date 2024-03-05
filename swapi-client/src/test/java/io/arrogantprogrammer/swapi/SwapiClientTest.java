@@ -1,5 +1,6 @@
 package io.arrogantprogrammer.swapi;
 
+import io.arrogantprogrammer.swapi.domain.CharactersResponse;
 import io.arrogantprogrammer.swapi.domain.StarWarsCharacter;
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
@@ -29,5 +30,14 @@ public class SwapiClientTest {
         assertNotNull(luke.name());
         assertEquals("Luke Skywalker", luke.name());
         LOGGER.info("Luke Skywalker: {}", luke);
+    }
+
+    @Test
+    public void testCharacterCount() {
+        CharactersResponse charactersResponse = swapiClient.getAllCharacters();
+        assertNotNull(charactersResponse);
+        assertNotNull(charactersResponse.count());
+        LOGGER.info("Character count: {}", charactersResponse.count());
+        assertEquals(82, charactersResponse.count());
     }
 }

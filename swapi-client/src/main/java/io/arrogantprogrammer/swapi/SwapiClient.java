@@ -1,5 +1,6 @@
 package io.arrogantprogrammer.swapi;
 
+import io.arrogantprogrammer.swapi.domain.CharactersResponse;
 import io.arrogantprogrammer.swapi.domain.StarWarsCharacter;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
@@ -14,5 +15,7 @@ public interface SwapiClient {
     @GET
     @Path("/people/{id}/")
     StarWarsCharacter getCharacter(@PathParam("id") int id);
-
+    @GET
+    @Path("people/")
+    CharactersResponse getAllCharacters();
 }
