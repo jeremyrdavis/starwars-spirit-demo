@@ -1,7 +1,7 @@
 package io.arrogantprogrammer.swapi;
 
 import io.arrogantprogrammer.swapi.domain.CharactersResponse;
-import io.arrogantprogrammer.swapi.domain.StarWarsCharacter;
+import io.arrogantprogrammer.domain.StarWarsCharacter;
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;

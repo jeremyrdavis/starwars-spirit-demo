@@ -1,6 +1,6 @@
 package io.arrogantprogrammer.swapi;
 
-import io.arrogantprogrammer.swapi.domain.StarWarsCharacter;
+import io.arrogantprogrammer.domain.StarWarsCharacter;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;

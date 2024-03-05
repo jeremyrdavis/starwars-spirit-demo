@@ -1,8 +1,9 @@
 package io.arrogantprogrammer.frontend;
 
 import io.arrogantprogrammer.swapi.SwapiService;
-import io.arrogantprogrammer.swapi.domain.StarWarsCharacter;
+import io.arrogantprogrammer.domain.StarWarsCharacter;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -22,9 +23,12 @@ public class StarWarsSpiritResource {
     @GET
     @Path("/{name}")
     @Produces(MediaType.TEXT_PLAIN)
+    @Transactional
     public String hello(@PathParam("name") String name) {
         LOGGER.info("Running hello");
         StarWarsCharacter starWarsCharacter = swapiService.getRandomStarWarsCharacter();
-        return "%s, your Star Wars Spirit character is %s.".formatted(name, starWarsCharacter.name());
+        StarWarsSpirit starWarsSpirit = new StarWarsSpirit(name, starWarsCharacter.url());
+        starWarsSpirit.persist();
+        return "Hello, %s!  Your Star Wars Spirit character is %s.".formatted(name, starWarsCharacter.name());
     }
 }

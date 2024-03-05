@@ -1,7 +1,7 @@
 package io.arrogantprogrammer.swapi;
 
 import io.arrogantprogrammer.swapi.domain.CharactersResponse;
-import io.arrogantprogrammer.swapi.domain.StarWarsCharacter;
+import io.arrogantprogrammer.domain.StarWarsCharacter;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
