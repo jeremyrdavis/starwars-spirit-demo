@@ -11,5 +11,9 @@ public class StarWarsSpiritAssignmentRepository implements PanacheRepository<Sta
     public void persist(StarWarsSpiritAssignment starWarsSpiritAssignment) {
         starWarsSpiritAssignment.persist();
     }
+
+    public String mostPopularSpiritCharacter() {
+        return StarWarsSpiritAssignment.find("SELECT characterUrl as characterUrl, COUNT(*) as urlCount FROM StarWarsSpiritAssignment GROUP BY characterUrl ORDER BY urlCount DESC").project(StarWarsSpiritAssignmentCharacterUrl.class).firstResult().characterUrl;
+    }
 }
 

@@ -11,12 +11,12 @@ public class StarWarsSpiritAssignment extends PanacheEntity {
 
     String name;
 
-    URI characterUrl;
+    String characterUrl;
 
     protected StarWarsSpiritAssignment() {
     }
 
-    protected StarWarsSpiritAssignment(String name, URI characterUrl) {
+    protected StarWarsSpiritAssignment(String name, String characterUrl) {
         this.name = name;
         this.characterUrl = characterUrl;
     }
@@ -51,7 +51,7 @@ public class StarWarsSpiritAssignment extends PanacheEntity {
         return name;
     }
 
-    public URI getCharacterUrl() {
+    public String getCharacterUrl() {
         return characterUrl;
     }
 }

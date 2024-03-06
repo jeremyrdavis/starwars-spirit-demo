@@ -13,11 +13,11 @@ public record StarWarsCharacter(
         String eyeColor,
         String birthYear,
         String gender,
-        URI homeworld,
-        List<URI> films,
-        List<URI> species,
-        List<URI> vehicles,
-        List<URI> starships,
+        String homeworld,
+        List<String> films,
+        List<String> species,
+        List<String> vehicles,
+        List<String> starships,
         Instant created,
         Instant edited,
-        URI url) {}
+        String url) {}

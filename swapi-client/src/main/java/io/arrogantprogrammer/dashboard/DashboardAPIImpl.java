@@ -8,13 +8,14 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
-public class DasboardAPIImpl implements DashboardAPI {
+public class DashboardAPIImpl implements DashboardAPI {
 
-    static final Logger LOGGER = LoggerFactory.getLogger(DasboardAPIImpl.class);
+    static final Logger LOGGER = LoggerFactory.getLogger(DashboardAPIImpl.class);
 
     @Inject
     StarWarsSpiritAssignmentRepository  starWarsSpiritAssignmentRepository;
@@ -30,4 +31,10 @@ public class DasboardAPIImpl implements DashboardAPI {
 
         return starWarsSpiritAssignmentRepository.streamAll().map(s -> new StarWarsSpiritAssignmentRecord(s.getName(), s.getCharacterUrl())).collect(Collectors.toList());
     }
+
+    @Override
+    public String mostPopularSpiritCharacter() {
+        return starWarsSpiritAssignmentRepository.mostPopularSpiritCharacter();
+    }
+
 }
