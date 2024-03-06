@@ -6,8 +6,8 @@ import java.util.List;
 
 public record StarWarsCharacter(
         String name,
-        int height,
-        int mass,
+        String height,
+        String mass,
         String hairColor,
         String skinColor,
         String eyeColor,

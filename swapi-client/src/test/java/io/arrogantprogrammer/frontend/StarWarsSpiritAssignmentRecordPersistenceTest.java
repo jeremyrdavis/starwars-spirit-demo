@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @QuarkusTest
 @QuarkusTestResource(SwapiClientTestResource.class)
 public class StarWarsSpiritAssignmentRecordPersistenceTest {
+
     static final Logger LOGGER = LoggerFactory.getLogger(StarWarsSpiritAssignmentRecordPersistenceTest.class);
 
     @Test
