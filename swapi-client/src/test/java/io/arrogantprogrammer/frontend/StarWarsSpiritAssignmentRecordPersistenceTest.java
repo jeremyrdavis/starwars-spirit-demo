@@ -1,5 +1,6 @@
 package io.arrogantprogrammer.frontend;
 
+import io.arrogantprogrammer.dashboard.StarWarsSpiritAssignment;
 import io.arrogantprogrammer.swapi.SwapiClientTestResource;
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
@@ -13,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @QuarkusTest
 @QuarkusTestResource(SwapiClientTestResource.class)
-public class StarWarsSpiritPersistenceTest {
-    static final Logger LOGGER = LoggerFactory.getLogger(StarWarsSpiritPersistenceTest.class);
+public class StarWarsSpiritAssignmentRecordPersistenceTest {
+    static final Logger LOGGER = LoggerFactory.getLogger(StarWarsSpiritAssignmentRecordPersistenceTest.class);
 
     @Test
     public void testStarWarsSpiritCharacter() {
@@ -26,6 +27,6 @@ public class StarWarsSpiritPersistenceTest {
                 .statusCode(200)
                 .body(containsString("Hello, Buddy!  Your Star Wars Spirit character is"));
 
-        assertTrue(StarWarsSpirit.count() > 0);
+        assertTrue(StarWarsSpiritAssignment.count() > 0);
     }
 }

@@ -12,8 +12,8 @@ import static org.hamcrest.CoreMatchers.containsString;
 
 @QuarkusTest
 @QuarkusTestResource(SwapiClientTestResource.class)
-public class StarWarsSpiritResourceTest {
-    static final Logger LOGGER = LoggerFactory.getLogger(StarWarsSpiritResourceTest.class);
+public class StarWarsSpiritAssignmentRecordResourceTest {
+    static final Logger LOGGER = LoggerFactory.getLogger(StarWarsSpiritAssignmentRecordResourceTest.class);
 
     @Test
     public void testStarWarsSpiritCharacter() {
@@ -22,6 +22,6 @@ public class StarWarsSpiritResourceTest {
                 .when().get("/hello/Buddy")
                 .then()
                 .statusCode(200)
-                .body(containsString("Hello, Buddy.  Your Star Wars Spirit character is"));
+                .body(containsString("Hello, Buddy!  Your Star Wars Spirit character is"));
     }
 }

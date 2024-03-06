@@ -1,4 +1,4 @@
-package io.arrogantprogrammer.frontend;
+package io.arrogantprogrammer.dashboard;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
@@ -7,16 +7,16 @@ import java.net.URI;
 import java.util.Objects;
 
 @Entity
-public class StarWarsSpirit extends PanacheEntity {
+public class StarWarsSpiritAssignment extends PanacheEntity {
 
     String name;
 
     URI characterUrl;
 
-    protected StarWarsSpirit() {
+    protected StarWarsSpiritAssignment() {
     }
 
-    protected StarWarsSpirit(String name, URI characterUrl) {
+    protected StarWarsSpiritAssignment(String name, URI characterUrl) {
         this.name = name;
         this.characterUrl = characterUrl;
     }
@@ -34,7 +34,7 @@ public class StarWarsSpirit extends PanacheEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        StarWarsSpirit that = (StarWarsSpirit) o;
+        StarWarsSpiritAssignment that = (StarWarsSpiritAssignment) o;
 
         if (!Objects.equals(name, that.name)) return false;
         return Objects.equals(characterUrl, that.characterUrl);

@@ -1,5 +1,7 @@
 package io.arrogantprogrammer.frontend;
 
+import io.arrogantprogrammer.dashboard.api.DashboardAPI;
+import io.arrogantprogrammer.domain.StarWarsSpiritAssignmentRecord;
 import io.arrogantprogrammer.swapi.SwapiService;
 import io.arrogantprogrammer.domain.StarWarsCharacter;
 import jakarta.inject.Inject;
@@ -20,6 +22,9 @@ public class StarWarsSpiritResource {
     @Inject
     SwapiService swapiService;
 
+    @Inject
+    DashboardAPI dashboardAPI;
+
     static final Logger LOGGER = LoggerFactory.getLogger(StarWarsSpiritResource.class);
 
     @GET
@@ -29,16 +34,15 @@ public class StarWarsSpiritResource {
     public String hello(@PathParam("name") String name) {
         LOGGER.info("Running hello");
         StarWarsCharacter starWarsCharacter = swapiService.getRandomStarWarsCharacter();
-        StarWarsSpirit starWarsSpirit = new StarWarsSpirit(name, starWarsCharacter.url());
-        starWarsSpirit.persist();
+        dashboardAPI.addStarWarsSpiritAssignment(new StarWarsSpiritAssignmentRecord(name, starWarsCharacter.url()));
         return "Hello, %s!  Your Star Wars Spirit character is %s.".formatted(name, starWarsCharacter.name());
     }
 
     @GET
     @Path("/spirits")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<StarWarsSpirit> allSpirits() {
+    public List<StarWarsSpiritAssignmentRecord> allSpirits() {
         LOGGER.info("Running allSpirits");
-        return StarWarsSpirit.listAll();
+        return dashboardAPI.allStarWarsSpiritAssignments();
     }
 }
