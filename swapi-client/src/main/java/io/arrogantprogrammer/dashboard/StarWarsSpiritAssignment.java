@@ -3,7 +3,6 @@ package io.arrogantprogrammer.dashboard;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 
-import java.net.URI;
 import java.util.Objects;
 
 @Entity
@@ -13,6 +12,8 @@ public class StarWarsSpiritAssignment extends PanacheEntity {
 
     String characterUrl;
 
+    ThumbsUpThumbsDown thumbsUpThumbsDown;
+
     protected StarWarsSpiritAssignment() {
     }
 
@@ -21,11 +22,25 @@ public class StarWarsSpiritAssignment extends PanacheEntity {
         this.characterUrl = characterUrl;
     }
 
+    public void thumbsUp() {
+        this.thumbsUpThumbsDown = ThumbsUpThumbsDown.THUMBS_UP;
+    }
+
+    public void thumbsDown() {
+        this.thumbsUpThumbsDown = ThumbsUpThumbsDown.THUMBS_DOWN;
+    }
+
+    public void thumbsNeutral() {
+        this.thumbsUpThumbsDown = ThumbsUpThumbsDown.NEUTRAL;
+    }
+
     @Override
     public String toString() {
-        return "StarWarsSpirit{" +
+        return "StarWarsSpiritAssignment{" +
                 "name='" + name + '\'' +
-                ", characterUrl=" + characterUrl +
+                ", characterUrl='" + characterUrl + '\'' +
+                ", thumbsUpThumbsDown=" + thumbsUpThumbsDown +
+                ", id=" + id +
                 '}';
     }
 
@@ -37,13 +52,15 @@ public class StarWarsSpiritAssignment extends PanacheEntity {
         StarWarsSpiritAssignment that = (StarWarsSpiritAssignment) o;
 
         if (!Objects.equals(name, that.name)) return false;
-        return Objects.equals(characterUrl, that.characterUrl);
+        if (!Objects.equals(characterUrl, that.characterUrl)) return false;
+        return thumbsUpThumbsDown == that.thumbsUpThumbsDown;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (characterUrl != null ? characterUrl.hashCode() : 0);
+        result = 31 * result + (thumbsUpThumbsDown != null ? thumbsUpThumbsDown.hashCode() : 0);
         return result;
     }
 

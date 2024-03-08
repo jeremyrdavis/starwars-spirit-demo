@@ -2,6 +2,7 @@ package io.arrogantprogrammer.dashboard;
 
 import io.arrogantprogrammer.dashboard.api.DashboardAPI;
 import io.arrogantprogrammer.domain.StarWarsSpiritAssignmentRecord;
+import io.arrogantprogrammer.domain.VoteThumbsUpOrDown;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -35,6 +36,13 @@ public class DashboardAPIImpl implements DashboardAPI {
     @Override
     public String mostPopularSpiritCharacter() {
         return starWarsSpiritAssignmentRepository.mostPopularSpiritCharacter();
+    }
+
+    @Override
+    public void thumbsUpThumbsDown(VoteThumbsUpOrDown voteThumbsUpOrDown) {
+        StarWarsSpiritAssignment starWarsSpiritAssignment = starWarsSpiritAssignmentRepository.findById(voteThumbsUpOrDown.id());
+        starWarsSpiritAssignment.thumbsUpThumbsDown = voteThumbsUpOrDown.thumbsUpThumbsDown();
+        starWarsSpiritAssignmentRepository.persist(starWarsSpiritAssignment);
     }
 
 }

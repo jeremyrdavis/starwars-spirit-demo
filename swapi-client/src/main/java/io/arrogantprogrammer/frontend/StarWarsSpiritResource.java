@@ -2,15 +2,14 @@ package io.arrogantprogrammer.frontend;
 
 import io.arrogantprogrammer.dashboard.api.DashboardAPI;
 import io.arrogantprogrammer.domain.StarWarsSpiritAssignmentRecord;
+import io.arrogantprogrammer.domain.VoteThumbsUpOrDown;
 import io.arrogantprogrammer.swapi.SwapiService;
 import io.arrogantprogrammer.domain.StarWarsCharacter;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,5 +43,13 @@ public class StarWarsSpiritResource {
     public List<StarWarsSpiritAssignmentRecord> allSpirits() {
         LOGGER.info("Running allSpirits");
         return dashboardAPI.allStarWarsSpiritAssignments();
+    }
+
+    @PATCH
+    @Path("/thumbsUpThumbsDown")
+    @Transactional
+    public Response thumbsUpThumbsDown(VoteThumbsUpOrDown voteThumbsUpOrDown) {
+        dashboardAPI.thumbsUpThumbsDown(voteThumbsUpOrDown);
+        return Response.ok().build();
     }
 }
