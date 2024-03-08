@@ -2,6 +2,8 @@ package io.arrogantprogrammer.dashboard;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 import java.util.Objects;
 
@@ -12,6 +14,7 @@ public class StarWarsSpiritAssignment extends PanacheEntity {
 
     String characterUrl;
 
+    @Enumerated(EnumType.STRING)
     ThumbsUpThumbsDown thumbsUpThumbsDown;
 
     protected StarWarsSpiritAssignment() {
