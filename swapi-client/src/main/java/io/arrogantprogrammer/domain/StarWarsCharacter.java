@@ -1,6 +1,5 @@
 package io.arrogantprogrammer.domain;
 
-import java.net.URI;
 import java.time.Instant;
 import java.util.List;
 
